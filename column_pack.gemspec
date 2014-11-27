@@ -6,7 +6,7 @@ require 'column_pack/version'
 Gem::Specification.new do |spec|
   spec.name          = "column_pack"
   spec.version       = ColumnPack::VERSION
-  spec.authors       = ["justintanner"]
+  spec.authors       = ["Justin Tanner"]
   spec.email         = ["justinwtanner@gmail.com"]
   spec.summary       = %q{Organizes items evenly into columns.}
   spec.description   = %q{Orangizes items as evenly as possible into several columns.}
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.1.0"
 end
