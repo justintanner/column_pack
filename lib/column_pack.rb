@@ -1,5 +1,5 @@
-require "column_pack/version"
+require 'action_view/helpers/column_pack'
 
-module ColumnPack
-  # Your code goes here...
+class ActionView::Base
+  include ColumnPack
 end
