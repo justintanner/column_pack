@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ColumnPackTest < ActiveSupport::TestCase
+  include ColumnPack::ViewHelpers
 
   test "truth" do
     assert_kind_of Module, ColumnPack

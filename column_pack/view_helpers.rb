@@ -4,7 +4,7 @@ module ColumnPack
     def pack_in_columns(total_columns, algorithm = :best_fit_increasing)
       bp = BinPacker.new(total_columns, algorithm)
 
-      yield(bp)
+      yeild(bp)
 
       bp.each do |col|
         col.each do |row|
