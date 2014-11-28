@@ -1,15 +1,28 @@
+
 module ColumnPack
   module ViewHelpers
+
+    include ActionView::Helpers::TagHelper
+    include ActionView::Context
 
     def pack_in_columns(total_columns, algorithm = :best_fit_increasing)
       bp = BinPacker.new(total_columns, algorithm)
 
       yield(bp)
 
-      bp.each do |col|
-        col.each do |row|
-          puts row.to_s
-        end
+      render_columns(bp.bins)
+    end
+
+    private
+    def render_columns(cols)
+      content_tag :div, :class => "column-pack-wrap" do
+        cols.collect { |col| render_single_column(col) }.join("").html_safe
+      end
+    end
+
+    def render_single_column(col)
+      content_tag :div, :class => "column-pack-col" do
+        col.each.collect { |row| row.to_s }.join("").html_safe
       end
     end
 

@@ -6,20 +6,21 @@ class BinPackerTest < ActiveSupport::TestCase
   test "initilizes with three columns" do
     bp = BinPacker.new(3)
     assert_equal BinPacker, bp.class
+    assert_equal Array, bp.bins.class
   end
 
   test "adds element" do
     bp = BinPacker.new(1)
     assert bp.add(400, 'A')
-    assert_equal 'A', bp[0][0]
+    assert_equal 'A', bp.bins[0][0]
   end
 
   test "adds two elements" do
     bp = BinPacker.new(2)
     assert bp.add(400, 'A')
-    assert_equal 'A', bp[0][0]
+    assert_equal 'A', bp.bins[0][0]
     assert bp.add(500, 'B')
-    assert_equal 'B', bp[1][0]
+    assert_equal 'B', bp.bins[1][0]
   end
 
   test "add accepts blocks" do
@@ -29,13 +30,13 @@ class BinPackerTest < ActiveSupport::TestCase
       "A"
     end
 
-    assert_equal 'A', bp[0][0]
+    assert_equal 'A', bp.bins[0][0]
 
     bp.add(500) do
       "B"
     end
 
-    assert_equal 'B', bp[1][0]
+    assert_equal 'B', bp.bins[1][0]
   end
 
   test "add six elements" do
@@ -46,16 +47,16 @@ class BinPackerTest < ActiveSupport::TestCase
     bp.add(400, 'D')
     bp.add(200, 'B')
     bp.add(100, 'A')
-    assert_equal 3, bp.length
+    assert_equal 3, bp.bins.length
 
-    assert_equal Array, bp[0].class
-    assert_operator 1, :<, bp[0].length
+    assert_equal Array, bp.bins[0].class
+    assert_operator 1, :<, bp.bins[0].length
 
-    assert_equal Array, bp[1].class
-    assert_operator 1, :<, bp[1].length
+    assert_equal Array, bp.bins[1].class
+    assert_operator 1, :<, bp.bins[1].length
 
-    assert_equal Array, bp[2].class
-    assert_operator 1, :<, bp[2].length
+    assert_equal Array, bp.bins[2].class
+    assert_operator 1, :<, bp.bins[2].length
   end
 
   test "can iterate bins" do
@@ -67,24 +68,13 @@ class BinPackerTest < ActiveSupport::TestCase
     bp.add(200, 'B')
     bp.add(100, 'A')
 
-    assert_equal Array, bp.each.class
+    assert_equal Array, bp.bins.class
 
-    bp.each do |bin|
+    bp.bins.each do |bin|
       bin.each do |element|
-        assert element.include? 'A', 'B', 'C', 'D', 'E', 'F'
+        assert_includes ['A', 'B', 'C', 'D', 'E', 'F'], element.to_s
       end
     end
-  end
-
-  test "length retuns bin numbers" do
-    bp = BinPacker.new(10)
-    assert_equal 10, bp.length
-  end
-
-  test "to string" do
-    bp = BinPacker.new(1)
-    bp.add(500, 'Z')
-    assert bp.to_s.include? 'Z'
   end
 
   test "empty space" do

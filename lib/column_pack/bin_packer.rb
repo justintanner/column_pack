@@ -8,29 +8,19 @@ module ColumnPack
       @needs_packing = true
     end
 
-    def add(size, content=yield)
-      @elements << {:size => size.to_i, :content => content}
+    def add(size, content=nil, &block)
+      if content.nil?
+        @elements << {:size => size.to_i, :content => block.call}
+      else
+        @elements << {:size => size.to_i, :content => content}
+      end
+
       @needs_packing = true
     end
 
-    def [](key)
-      pack_all if @needs_packing
-      @bins[key]
-    end
-
-    def each
+    def bins
       pack_all if @needs_packing
       @bins
-    end
-
-    def length
-      pack_all if @needs_packing
-      @bins.length
-    end
-
-    def to_s
-      pack_all if @needs_packing
-      @bins.to_s
     end
 
     def sizes

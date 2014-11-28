@@ -7,11 +7,10 @@ require "column_pack/version"
 Gem::Specification.new do |s|
   s.name        = "column_pack"
   s.version     = ColumnPack::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of ColumnPack."
-  s.description = "TODO: Description of ColumnPack."
+  s.authors     = ["Justin Tanner"]
+  s.email       = ["justinwtanner@gmail.com"]
+  s.summary     = "View helper to arrange elements into columns."
+  s.description = "Uses a simple bin packing algorithm to pack elments into multiple columns with less free space."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
