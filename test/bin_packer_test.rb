@@ -84,7 +84,6 @@ class BinPackerTest < ActiveSupport::TestCase
   end
 
   test "big data set" do
-
     (2..10).each do |num_bins|
       assert bp = BinPacker.new(num_bins)
 
@@ -94,7 +93,20 @@ class BinPackerTest < ActiveSupport::TestCase
       end
       assert_operator 0, :<, bp.empty_space
     end
-
   end
+
+  test "six items with a perfect fit" do
+    bp = BinPacker.new(3)
+    bp.add(100, 'A')
+    bp.add(300, 'B')
+    bp.add(50, 'C')
+    bp.add(350, 'D')
+    bp.add(200, 'E')
+    bp.add(200, 'F')
+
+    assert_equal 0, bp.empty_space
+    assert_equ
+  end
+
 
 end
