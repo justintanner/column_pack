@@ -23,16 +23,4 @@ class ColumnPackerTest < ActiveSupport::TestCase
     cp.add(100, 'ZAP')
     assert_includes cp.render, 'ZAP'
   end
-
-  test "padds block" do
-    cp = ColumnPacker.new(3, {:algorithm => :best_fit_increasing, :pad_to_fit => true})
-    cp.add(100, 'A')
-    cp.add(100, 'B')
-    cp.add(100, 'C')
-    cp.add(300, 'D')
-    cp.add(300, 'E')
-    cp.add(1, 'F')
-    assert_includes cp.render, "margin-bottom: 299px"
-  end
-
 end
