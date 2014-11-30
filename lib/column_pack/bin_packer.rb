@@ -4,11 +4,12 @@ module ColumnPack
     include ActionView::Helpers::TagHelper
     include ActionView::Context
 
-    def initialize(total_bins, algorithm = :best_fit_increasing)
-      @total_bins    = total_bins
-      @algorithm     = algorithm
-      @elements      = []
-      @needs_packing = true
+    def initialize(total_bins, algorithm = :best_fit_increasing, shuffle_in_col=true)
+      @total_bins     = total_bins
+      @algorithm      = algorithm
+      @shuffle_in_col = shuffle_in_col
+      @elements       = []
+      @needs_packing  = true
     end
 
     def add(size, content=nil, &block)
@@ -45,7 +46,7 @@ module ColumnPack
       @sizes  = Array.new(@total_bins, 0)
 
       self.send(@algorithm)
-      shuffle_cols
+      shuffle_within_cols if @shuffle_in_col
 
       @needs_packing = false
     end
@@ -67,7 +68,7 @@ module ColumnPack
       end
     end
 
-    def shuffle_cols
+    def shuffle_within_cols
       @bins.each do |bin|
         bin.shuffle!
       end

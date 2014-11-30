@@ -5,8 +5,8 @@ module ColumnPack
     include ActionView::Helpers::TagHelper
     include ActionView::Context
 
-    def pack_in_columns(total_columns, algorithm = :best_fit_increasing)
-      bp = BinPacker.new(total_columns, algorithm)
+    def pack_in_columns(total_columns, algorithm = :best_fit_increasing, shuffle_in_col=true)
+      bp = BinPacker.new(total_columns, algorithm, shuffle_in_col)
 
       yield(bp)
 
