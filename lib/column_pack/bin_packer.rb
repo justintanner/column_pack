@@ -30,6 +30,11 @@ module ColumnPack
       return space
     end
 
+    def sizes
+      pack_all if @needs_packing
+      @sizes
+    end
+
     private
     def pack_all
       @bins   = Array.new(@total_bins) {Array.new}
