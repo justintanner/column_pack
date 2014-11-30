@@ -52,7 +52,8 @@ module ColumnPack
     end
 
     def best_fit_decreasing
-      @elements.sort_by{ |e| e[:size] }.reverse!
+      @elements.sort_by! { |e| e[:size] }
+      @elements.reverse!
       best_fit
     end
 
