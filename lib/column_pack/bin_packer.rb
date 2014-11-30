@@ -1,32 +1,25 @@
 module ColumnPack
   class BinPacker
 
-    def initialize(total_bins, algorithm = :best_fit_increasing, shuffle_in_col=true)
-      @total_bins     = total_bins
-      @algorithm      = algorithm
-      @shuffle_in_col = shuffle_in_col
+    def initialize(total_bins, options = nil)
+      @total_bins = total_bins
+      options ||= {}
+
+      @algorithm      = options[:algorithm]      || :best_fit_decreasing
+      @shuffle_in_col = options[:shuffle_in_col] || true
+
       @elements       = []
       @needs_packing  = true
     end
 
-    def add(size, content=nil, &block)
-      if content.nil?
-        @elements << {:size => size.to_i, :content => block.call}
-      else
-        @elements << {:size => size.to_i, :content => content}
-      end
-
+    def add(size, content)
+      @elements << {:size => size.to_i, :content => content}
       @needs_packing = true
     end
 
     def bins
       pack_all if @needs_packing
       @bins
-    end
-
-    def sizes
-      pack_all if @needs_packing
-      @sizes
     end
 
     def empty_space
@@ -67,9 +60,7 @@ module ColumnPack
     end
 
     def shuffle_within_cols
-      @bins.each do |bin|
-        bin.shuffle!
-      end
+      @bins.each { |bin| bin.shuffle! }
     end
 
     def pack(col, element)

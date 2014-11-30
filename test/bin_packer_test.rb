@@ -16,27 +16,12 @@ class BinPackerTest < ActiveSupport::TestCase
   end
 
   test "adds two elements" do
-    bp = BinPacker.new(2)
+    bp = BinPacker.new(2, {:algorithm => :best_fit_decreasing})
     assert bp.add(400, 'A')
-    assert_equal 'A', bp.bins[0][0]
     assert bp.add(500, 'B')
-    assert_equal 'B', bp.bins[1][0]
-  end
 
-  test "add accepts blocks" do
-    bp = BinPacker.new(3)
-
-    bp.add(400) do
-      "A"
-    end
-
-    assert_equal 'A', bp.bins[0][0]
-
-    bp.add(500) do
-      "B"
-    end
-
-    assert_equal 'B', bp.bins[1][0]
+    assert_equal 'A', bp.bins[1][0]
+    assert_equal 'B', bp.bins[0][0]
   end
 
   test "add six elements" do
@@ -82,6 +67,12 @@ class BinPackerTest < ActiveSupport::TestCase
     bp.add(200, 'A')
     bp.add(900, 'B')
     assert_equal 1600, bp.empty_space
+  end
+
+  test "test different packing algorithms" do
+    bp = BinPacker.new(3, {:algorithm => :best_fit_decreasing})
+    bp.add(100, 'A')
+    bp.add(900, 'B')
   end
 
   test "big data set" do
