@@ -22,13 +22,13 @@ module ColumnPack
     private
     def render_columns(bins)
       content_tag :div, :class => "column-pack-wrap" do
-        bins.collect { |bin| render_single_column(bin) }.join("\n").html_safe
+        bins.collect { |bin| render_single_column(bin) + "\n" }.join("").html_safe
       end
     end
 
     def render_single_column(bin)
       content_tag :div, :class => "column-pack-col" do
-        bin.collect { |element| render_element(element) }.join("\n").html_safe
+        bin.collect { |element| render_element(element) + "\n" }.join("").html_safe
       end
     end
 
