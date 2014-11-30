@@ -29,7 +29,9 @@ class ColumnPackerTest < ActiveSupport::TestCase
     cp.add(100, 'A')
     cp.add(100, 'B')
     cp.add(100, 'C')
-    cp.add(299, 'D')
+    cp.add(300, 'D')
+    cp.add(300, 'E')
+    cp.add(1, 'F')
     assert_includes cp.render, "margin-bottom: 299px"
   end
 
