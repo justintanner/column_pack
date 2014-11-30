@@ -1,9 +1,6 @@
 module ColumnPack
   class BinPacker
 
-    include ActionView::Helpers::TagHelper
-    include ActionView::Context
-
     def initialize(total_bins, algorithm = :best_fit_increasing, shuffle_in_col=true)
       @total_bins     = total_bins
       @algorithm      = algorithm
@@ -14,7 +11,7 @@ module ColumnPack
 
     def add(size, content=nil, &block)
       if content.nil?
-        @elements << {:size => size.to_i, :content => capture(&block)}
+        @elements << {:size => size.to_i, :content => block.call}
       else
         @elements << {:size => size.to_i, :content => content}
       end
