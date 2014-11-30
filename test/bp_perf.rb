@@ -1,21 +1,17 @@
-require_relative 'lib/column_pack/bin_packer'
+require_relative '../lib/column_pack/bin_packer'
 
 include ColumnPack
 
-hundred = File.readlines(File.expand_path('./test/dummy/test/fixtures/files/hundred.txt'))
-
-bp_inc = BinPacker.new(5, :best_fit_increasing)
-bp_dec = BinPacker.new(5, :best_fit_decreasing)
+hundred = File.readlines(File.expand_path('./dummy/test/fixtures/files/hundred.txt'))
 
 algos = [:best_fit_increasing, :best_fit_decreasing]
-
 
 algos.each do |algo|
   empty_spaces = []
 
   (2..20).each do |num_bins|
 
-    bp = BinPacker.new(num_bins, algo)
+    bp = BinPacker.new(num_bins, {:algorithm => algo})
     hundred.each do |line|
       number, name, = line.split(' ')
       bp.add(number.to_i, name)
