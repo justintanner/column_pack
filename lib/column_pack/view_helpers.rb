@@ -22,9 +22,14 @@ module ColumnPack
 
     def render_single_column(col)
       content_tag :div, :class => "column-pack-col" do
-        col.each.collect { |row| row.to_s }.join("").html_safe
+        col.each.collect { |element| render_element(element) }.join("").html_safe
       end
     end
 
+    def render_element(element)
+      content_tag :div, :class => "column-pack-element" do
+        element
+      end
+    end
   end
 end
