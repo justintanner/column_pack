@@ -1,0 +1,30 @@
+.column-pack-wrap {
+  width: 930px;
+  marign: 0;
+  padding: 0;
+}
+
+.column-pack-col {
+  float: left;
+  width: 300px;
+  margin: 0 5px 0 5px;
+  padding: 0;
+}
+
+.column-pack-element {
+  display: block;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.column-pack-element a {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.columne-pack-element img {
+  display: block;
+  marign: 0;
+  padding: 0;
+  border: none;
+}
