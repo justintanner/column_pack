@@ -105,7 +105,6 @@ class BinPackerTest < ActiveSupport::TestCase
     bp.add(200, 'F')
 
     assert_equal 0, bp.empty_space
-    assert_equ
   end
 
 

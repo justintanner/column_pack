@@ -1,6 +1,13 @@
 # column_pack
 
-A gem to organize elements into columns.
+A rails view helper to divide content into columns.
+
+`column_pack` uses a simple bin packing algorithm to arrange content as evenly as posible into a set
+number of columns.
+
+Here is an example:
+
+![example image](http://i.imgur.com/ts69lmj.jpg)
 
 ## Installation
 
@@ -20,36 +27,37 @@ Add the following lines to `app/assets/stylesheets/application.css`:
 
 Pack some text into three columns:
 
-```ruby
-pack_in_columns(3) do |bag|
+```erb
+<%= pack_in_columns(3) do |bag| %>
 
-  bag.add 100, 'A'
-  bag.add 300, 'B'
-  bag.add 50,  'C'
-  bag.add 350, 'D'
-  bag.add 200, 'E'
-  bag.add 200, 'F'
+  <%= bag.add 100, 'A' %>
+  <%= bag.add 300, 'B' %>
+  <%= bag.add 50,  'C' %>
+  <%= bag.add 350, 'D' %>
+  <%= bag.add 200, 'E' %>
+  <%= bag.add 200, 'F' %>
 
-end
+<%= end %>
 ```
 
 Pack some images into five columns:
 
 ```erb
 <%= pack_in_columns(5) do |bag| %>
-
   <% @images.each do |image| %>
-    <% bag.add(image.height) do %>
-      <%= image_tag image.url %>
-   <% end %>
-  <% end %>
 
+   <% bag.add(image.height) do %>
+     <%= image_tag image.url %>
+   <% end %>
+
+  <% end %>
 <% end %>
 ```
 
 
 ## Customizing CSS
 
+The spacing between elements is left to the user
 
 ## Contributing
 
