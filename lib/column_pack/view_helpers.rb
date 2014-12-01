@@ -8,5 +8,6 @@ module ColumnPack
 
       cp.render
     end
+
   end
 end

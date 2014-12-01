@@ -1,11 +1,10 @@
 # column_pack
 
-A rails view helper to divide content into columns.
+A rails view helper to arrange content into columns.
 
-`column_pack` uses a simple bin packing algorithm to arrange content as evenly as posible into a set
-number of columns.
+**column_pack** uses a simple bin packing algorithm to arrange content as evenly as possible into columns.
 
-Here is an example:
+Here is an example of 150 pixel wide images arranged into 5 columns:
 
 ![example image](http://i.imgur.com/ts69lmj.jpg)
 
@@ -17,7 +16,7 @@ Add this line to your application's Gemfile:
 gem 'column_pack'
 ```
 
-Add the following lines to `app/assets/stylesheets/application.css`:
+Add the following line to `app/assets/stylesheets/application.css`
 
 ```
 //= require column_pack
@@ -54,14 +53,43 @@ Pack some images into five columns:
 <% end %>
 ```
 
+## Styling the Columns
 
-## Customizing CSS
+The size of the column container and spacing between should be be styled to match the content.
 
-The spacing between elements is left to the user
+The following example creates **three 300px** columns with **10px** spacing:
+
+```css
+.column-pack-wrap {
+  width: 930px;
+}
+
+.column-pack-col {
+  width: 300px;
+  margin: 0 5px 0 5px;
+}
+
+.column-pack-element {
+  margin: 0 0 10px 0;
+}
+```
+
+## Additional Options
+
+**Signature**
+
+```ruby
+pack_in_columns(total_cols, options = {})
+```
+
+**Options**
+
+* `:algorithm` - specifiy a different bin packing algorithm (default is `:best_fit_decreasing`)
+* `:shuffle_in_cols` - after packing columns, shuffle the elements in each column (default is `true`)
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/column_pack/fork )
+1. Fork it ( https://github.com/justintanner/column_pack/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

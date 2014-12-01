@@ -4,7 +4,7 @@ module ColumnPack
     include ActionView::Context
 
     def initialize(total_bins, options = nil)
-      @bin_packer  = BinPacker.new(total_bins, options)
+      @bin_packer = BinPacker.new(total_bins, options)
     end
 
     def add(height, content = nil, &block)

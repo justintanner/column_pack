@@ -5,8 +5,8 @@
 }
 
 .column-pack-col {
-  float: left;
   width: 300px;
+  float: left;
   margin: 0 5px 0 5px;
   padding: 0;
 }
