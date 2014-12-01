@@ -33,7 +33,7 @@ class ColumnPackerTest < ActiveSupport::TestCase
     no_shuffle.add(500, 'E')
     no_shuffle.add(600, 'F')
 
-    shuffle = ColumnPacker.new(3, {:shuffle_in_col => false})
+    shuffle = ColumnPacker.new(3, {:shuffle_in_col => true})
     shuffle.add(100, 'A')
     shuffle.add(200, 'B')
     shuffle.add(300, 'C')

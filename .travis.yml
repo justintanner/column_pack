@@ -4,7 +4,5 @@ rvm:
   - 2.0.0
   - 1.9.3
 env:
-  - "RAILS_VERSION=3.2.1"
-  - "RAILS_VERSION=4.0.12"
   - "RAILS_VERSION=4.1.8"
   - "RAILS_VERSION=master"
