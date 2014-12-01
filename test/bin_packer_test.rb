@@ -9,10 +9,31 @@ class BinPackerTest < ActiveSupport::TestCase
     assert_equal Array, bp.bins.class
   end
 
+  test "can't init with a non-positive number of cols" do
+    assert_raises ArgumentError do
+      bp = BinPacker.new(0)
+    end
+
+    assert_raises ArgumentError do
+      bp = BinPacker.new(-100)
+    end
+  end
+
   test "adds element" do
     bp = BinPacker.new(1)
     assert bp.add(400, 'A')
     assert_equal 'A', bp.bins[0][0]
+  end
+
+  test "height must be greater than zero" do
+    bp = BinPacker.new(3)
+    assert_raises ArgumentError do
+      bp.add(0, 'A')
+    end
+
+    assert_raises ArgumentError do
+      bp.add(-1, 'A')
+    end
   end
 
   test "adds two elements" do
@@ -108,7 +129,6 @@ class BinPackerTest < ActiveSupport::TestCase
         number, name, = line.split(' ')
         assert bp.add(number.to_i, name)
       end
-      assert_operator 0, :<, bp.empty_space
     end
   end
 

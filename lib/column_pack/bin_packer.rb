@@ -4,6 +4,8 @@ module ColumnPack
     attr_accessor :elements
 
     def initialize(total_bins, options = nil)
+      raise ArgumentError.new("Must choose a number of bins greater than zero") if total_bins <= 0
+
       @total_bins = total_bins
 
       options ||= {}
@@ -20,6 +22,7 @@ module ColumnPack
     end
 
     def add(size, content)
+      raise ArgumentError.new("Bin size must be greater than zero") if size <= 0
       @elements << {:size => size.to_i, :content => content}
       @needs_packing = true
     end
