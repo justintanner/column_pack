@@ -1,10 +1,8 @@
 # column_pack
 
-A rails view helper to arrange content into columns.
+Arranges content into *fixed number of columns* using a bin packing algorithm.
 
-**column_pack** uses a simple bin packing algorithm to arrange content as evenly as possible into columns.
-
-Here is an example of 150 pixel wide images arranged into 5 columns:
+Example of 17 images (each 150px wide) arranged into 5 columns:
 
 ![example image](http://i.imgur.com/ts69lmj.jpg)
 

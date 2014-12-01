@@ -1,12 +1,23 @@
 module ColumnPack
+
+  # Arranges HTML elements into a fixed number of columns.
   class ColumnPacker
     include ActionView::Helpers::TagHelper
     include ActionView::Context
 
-    def initialize(total_bins, options = nil)
-      @bin_packer = BinPacker.new(total_bins, options)
+    # Uses a fixed number of columns (total_columns).
+    #
+    # Options:
+    # :algorithm        specifiy a different bin packing algorithm (default :best_fit_decreasing)
+    #                   avaiable algorithms are :best_fit_decreasing, :best_fit_increasing
+    #
+    # :shuffle_in_col   after packing columns, shuffle the elements in each column (defaults to true)
+    #
+    def initialize(total_columns, options = nil)
+      @bin_packer = BinPacker.new(total_columns, options)
     end
 
+    # Adds element to be packed.
     def add(height, content = nil, &block)
       if content.nil?
         @bin_packer.add(height.to_i, capture(&block))
@@ -15,6 +26,7 @@ module ColumnPack
       end
     end
 
+    # Renders all elements into columns.
     def render
       render_columns(@bin_packer.bins)
     end

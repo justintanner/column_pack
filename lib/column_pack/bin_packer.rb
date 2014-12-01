@@ -1,8 +1,16 @@
 module ColumnPack
+
+  # Arranges elements into bins using a simple one dimensional bin packing algorithm.
   class BinPacker
 
-    attr_accessor :elements
-
+    # Uses a fixed number of bins (total_bins).
+    #
+    # Options:
+    # :algorithm        specifiy a different bin packing algorithm (default :best_fit_decreasing)
+    #                   avaiable algorithms are :best_fit_decreasing, :best_fit_increasing
+    #
+    # :shuffle_in_col   after packing columns, shuffle the elements in each column (defaults to true)
+    #
     def initialize(total_bins, options = nil)
       raise ArgumentError.new("Must choose a number of bins greater than zero") if total_bins <= 0
 
@@ -21,28 +29,27 @@ module ColumnPack
       @needs_packing  = true
     end
 
+    # Adds element to be packed.
     def add(size, content)
       raise ArgumentError.new("Bin size must be greater than zero") if size <= 0
+
       @elements << {:size => size.to_i, :content => content}
       @needs_packing = true
     end
 
+    # Returns a packed multi-dimensional array of elements.
     def bins
       pack_all if @needs_packing
       @bins
     end
 
+    # Total empty space left over by uneven packing.
     def empty_space
       pack_all if @needs_packing
       max = @sizes.each.max
       space = 0
       @sizes.each { |size| space += max - size }
       return space
-    end
-
-    def sizes
-      pack_all if @needs_packing
-      @sizes
     end
 
     private

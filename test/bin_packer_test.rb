@@ -96,14 +96,6 @@ class BinPackerTest < ActiveSupport::TestCase
     bp.add(900, 'B')
   end
 
-  test "size is correct" do
-    bp = BinPacker.new(3, {:algorithm => :best_fit_decreasing})
-    bp.add(200, 'A')
-    bp.add(900, 'B')
-    assert_equal 900, bp.sizes[0]
-    assert_equal 200, bp.sizes[1]
-  end
-
   test "can turn off shuffling" do
     bp = BinPacker.new(1, {:algorithm => :best_fit_decreasing, :shuffle_in_col => false})
     bp.add(900, 'A')
@@ -143,6 +135,5 @@ class BinPackerTest < ActiveSupport::TestCase
 
     assert_equal 0, bp.empty_space
   end
-
 
 end

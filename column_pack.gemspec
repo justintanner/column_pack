@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.version     = ColumnPack::VERSION
   s.authors     = ["Justin Tanner"]
   s.email       = ["justinwtanner@gmail.com"]
-  s.summary     = "A rails view helper to arrange content into columns."
-  s.description = "Uses a simple bin packing algorithm to arrange content as evenly as possible into columns."
+  s.summary     = "A rails helper to arrange content into columns."
+  s.description = "Arranges content into a fixed number of columns using a bin packing algorithm."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
