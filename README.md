@@ -1,6 +1,8 @@
 # column_pack
 
-Evenly arranges content into a fixed number of columns. Useful in creating [pinterst](http://www.pinterest.com) style image murals.
+Evenly arranges content into a fixed number of columns.
+
+Useful in creating [pinterest](http://www.pinterest.com) style image murals.
 
 Example of *17 images* each 150px wide arranged into *5 columns*.
 
