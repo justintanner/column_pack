@@ -1,12 +1,19 @@
 module ColumnPack
   class BinPacker
 
+    attr_accessor :elements
+
     def initialize(total_bins, options = nil)
       @total_bins = total_bins
-      options ||= {}
 
-      @algorithm      = options[:algorithm]      || :best_fit_decreasing
-      @shuffle_in_col = options[:shuffle_in_col] || true
+      options ||= {}
+      @algorithm  = options[:algorithm]      || :best_fit_decreasing
+
+      if options.has_key? :shuffle_in_col
+        @shuffle_in_col = options[:shuffle_in_col]
+      else
+        @shuffle_in_col = true
+      end
 
       @elements       = []
       @needs_packing  = true

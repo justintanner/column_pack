@@ -83,6 +83,23 @@ class BinPackerTest < ActiveSupport::TestCase
     assert_equal 200, bp.sizes[1]
   end
 
+  test "can turn off shuffling" do
+    bp = BinPacker.new(1, {:algorithm => :best_fit_decreasing, :shuffle_in_col => false})
+    bp.add(900, 'A')
+    bp.add(800, 'B')
+    bp.add(700, 'C')
+    bp.add(600, 'D')
+    bp.add(500, 'E')
+    bp.add(400, 'F')
+
+    assert_equal 'A', bp.bins[0][0]
+    assert_equal 'B', bp.bins[0][1]
+    assert_equal 'C', bp.bins[0][2]
+    assert_equal 'D', bp.bins[0][3]
+    assert_equal 'E', bp.bins[0][4]
+    assert_equal 'F', bp.bins[0][5]
+  end
+
   test "big data set" do
     (2..10).each do |num_bins|
       assert bp = BinPacker.new(num_bins)
