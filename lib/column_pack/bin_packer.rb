@@ -56,6 +56,7 @@ module ColumnPack
       @sizes  = Array.new(@total_bins, 0)
 
       self.send(@algorithm)
+      tall_to_middle
       shuffle_within_cols if @shuffle_in_col
 
       @needs_packing = false
@@ -81,6 +82,18 @@ module ColumnPack
 
     def shuffle_within_cols
       @bins.each { |bin| bin.shuffle! }
+    end
+
+    # moves the tallest bin to the middle
+    def tall_to_middle
+      if (@total_bins > 1) && ((@total_bins % 2) != 0)
+        size, max_col = @sizes.each_with_index.max
+        mid_col = @total_bins / 2
+
+        temp = @bins[mid_col].clone
+        @bins[mid_col] = @bins[max_col]
+        @bins[max_col] = temp
+      end
     end
 
     def pack(col, element)

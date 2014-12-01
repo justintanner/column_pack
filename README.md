@@ -1,10 +1,10 @@
 # column_pack [![Build Status](https://travis-ci.org/justintanner/column_pack.svg?branch=master)](https://travis-ci.org/justintanner/column_pack)
 
-Evenly arranges content into a fixed number of columns.
+Arranges content into a fixed number of columns.
 
 Useful in creating [pinterest](http://www.pinterest.com) style image murals.
 
-If you are looking for a JavaScript solution try: [packery](https://github.com/metafizzy/packery), [masonry](https://github.com/desandro/masonry) or [isotope](https://github.com/metafizzy/isotope).
+If you are looking for a JavaScript solution try: [packery][1], [masonry][2] or [isotope][3].
 
 ## Example
 
@@ -94,10 +94,6 @@ pack_in_columns(total_cols, options = {})
 * `:shuffle_in_cols` - after packing columns, shuffle the elements in each column (default is
   `true`)
 
-## Contributing
-
-1. Fork it ( https://github.com/justintanner/column_pack/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+[1]: https://github.com/metafizzy/packery
+[2]: https://github.com/desandro/masonry
+[3]: https://github.com/metafizzy/isotope
