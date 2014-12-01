@@ -1,4 +1,4 @@
-# column_pack
+# column_pack [![Build Status](https://travis-ci.org/justintanner/column_pack.svg?branch=master)](https://travis-ci.org/justintanner/column_pack)
 
 Evenly arranges content into a fixed number of columns.
 
