@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ColumnPackTest < ActiveSupport::TestCase
+class ViewHelperTest < ActiveSupport::TestCase
   include ColumnPack::ViewHelpers
   include ActionView::Helpers::UrlHelper
 

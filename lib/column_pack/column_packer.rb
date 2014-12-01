@@ -8,12 +8,12 @@ module ColumnPack
     # Uses a fixed number of columns (total_columns).
     #
     # Options:
-    # :algorithm        specifiy a different bin packing algorithm (default :best_fit_decreasing)
-    #                   avaiable algorithms are :best_fit_decreasing, :best_fit_increasing
+    # :algorithm        specify a different bin packing algorithm (default :best_fit_decreasing)
+    #                   available algorithms are :best_fit_decreasing, :best_fit_increasing
     #
     # :shuffle_in_col   after packing columns, shuffle the elements in each column (defaults to true)
     #
-    def initialize(total_columns, options = nil)
+    def initialize(total_columns, options = {})
       @bin_packer = BinPacker.new(total_columns, options)
     end
 

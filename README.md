@@ -1,8 +1,8 @@
 # column_pack
 
-Arranges content into *fixed number of columns* using a bin packing algorithm.
+Evenly arranges content into a fixed number of columns. Useful in creating [pinterst](http://www.pinterest.com) style image murals.
 
-Example of 17 images (each 150px wide) arranged into 5 columns:
+Example of *17 images* each 150px wide arranged into *5 columns*.
 
 ![example image](http://i.imgur.com/ts69lmj.jpg)
 
@@ -53,7 +53,7 @@ Pack some images into five columns:
 
 ## Styling the Columns
 
-The size of the column container and spacing between should be be styled to match the content.
+The size of the container and spacing between columns **requires css styling**.
 
 The following example creates **three 300px** columns with **10px** spacing:
 
@@ -82,8 +82,9 @@ pack_in_columns(total_cols, options = {})
 
 **Options**
 
-* `:algorithm` - specifiy a different bin packing algorithm (default is `:best_fit_decreasing`)
-* `:shuffle_in_cols` - after packing columns, shuffle the elements in each column (default is `true`)
+* `:algorithm` - specify a different bin packing algorithm (default is `:best_fit_decreasing`)
+* `:shuffle_in_cols` - after packing columns, shuffle the elements in each column (default is
+  `true`)
 
 ## Contributing
 
