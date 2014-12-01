@@ -4,11 +4,15 @@ Evenly arranges content into a fixed number of columns.
 
 Useful in creating [pinterest](http://www.pinterest.com) style image murals.
 
-Example of **17 images** arranged into **5 columns**.
+`column_pack` is a server side solution, if you are looking for client side libary try:
+[packery](https://github.com/metafizzy/packery), [masonry](https://github.com/desandro/masonry) or [isotope](https://github.com/metafizzy/isotope).
+
+## Eample
+
+**17 images** arranged into **5 columns**.
 
 ![example image](http://i.imgur.com/ts69lmj.jpg)
 
-Note: each image has a fixed width of 150 pixels.
 
 ## Installation
 
