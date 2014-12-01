@@ -10,7 +10,7 @@ If you are looking for a JavaScript solution try: [packery][1], [masonry][2] or 
 
 **17 images** arranged into **5 columns**.
 
-![example image](http://i.imgur.com/ts69lmj.jpg)
+![example image]http://i.imgur.com/deSRVox.jpg)
 
 (150px wide images)
 
