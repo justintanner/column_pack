@@ -87,7 +87,7 @@ class BinPackerTest < ActiveSupport::TestCase
     (2..10).each do |num_bins|
       assert bp = BinPacker.new(num_bins)
 
-      File.readlines(fixture_path + 'files/hundred.txt').each do |line|
+      File.readlines(File.expand_path('test/fixtures/files/hundred.txt')).each do |line|
         number, name, = line.split(' ')
         assert bp.add(number.to_i, name)
       end
