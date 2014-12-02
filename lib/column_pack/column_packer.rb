@@ -20,7 +20,7 @@ module ColumnPack
 
     # Adds element to be packed.
     def add(height, content = nil, &block)
-      if content.nil?
+      if block_given?
         @bin_packer.add(height.to_i, capture(&block))
       else
         @bin_packer.add(height.to_i, content)
