@@ -1,5 +1,7 @@
 require 'test_helper'
 
+require 'erubis'
+
 class ViewHelperTest < ActiveSupport::TestCase
   include ColumnPack::ViewHelpers
 

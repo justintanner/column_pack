@@ -1,0 +1,11 @@
+<%= pack_in_columns(3) do %>
+
+  <% items.each do |height, name| %>
+
+    <% pack_element(height) do %>
+      <%= link_to name, "" %>
+    <% end %>
+
+  <% end %>
+
+<% end %>
