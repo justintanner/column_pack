@@ -53,7 +53,7 @@ module ColumnPack
     end
 
     def render_element(element)
-      content_tag :div, element, :class => "column-pack-element"
+      content_tag :div, element.html_safe, :class => "column-pack-element"
     end
   end
 end
