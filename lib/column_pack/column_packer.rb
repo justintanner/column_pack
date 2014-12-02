@@ -3,9 +3,7 @@ module ColumnPack
   # Arranges HTML elements into a fixed number of columns.
   class ColumnPacker
     include ActionView::Context
-    include ActionView::Helpers::TagHelper
-    include ActionView::Helpers::CaptureHelper
-    include ActionView::Helpers::TextHelper
+    include ActionView::Helpers
 
     # Uses a fixed number of columns (total_columns).
     #
