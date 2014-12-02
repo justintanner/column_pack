@@ -2,12 +2,25 @@ require 'test_helper'
 
 class ViewHelperTest < ActiveSupport::TestCase
   include ColumnPack::ViewHelpers
+
+  include ActionView::Context
   include ActionView::Helpers::UrlHelper
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::TextHelper
+
+  test "pack_elment does nothing on it's own" do
+    assert_nothing_raised do
+      pack_element(100, 'A')
+      pack_element(100) do
+        link_to "http://www.google.com", content_tag(:p, "ZAP")
+      end
+    end
+  end
 
   test "pack text into columns" do
-    html = pack_in_columns(3) do |elements|
+    html = pack_in_columns(3) do
       (1..10).each do |number|
-        elements.add(number) do
+        pack_element(number) do
           "UNIQUE#{number}"
         end
       end
@@ -20,12 +33,11 @@ class ViewHelperTest < ActiveSupport::TestCase
   end
 
   test "pack html into columns" do
-    html = pack_in_columns(3) do |elements|
-      elements.add(100) do
-        link_to "http://www.google.com", content_tag(:p, "ZAP")
+    html = pack_in_columns(3) do
+      pack_element(100) do
+        link_to "http://www.google.com", content_tag(:p, "ZAP") + "a string"
       end
     end
     assert_includes html, "ZAP"
   end
-
 end

@@ -1,9 +1,9 @@
 module ColumnPack
-
   # Arranges HTML elements into a fixed number of columns.
   class ColumnPacker
     include ActionView::Context
-    include ActionView::Helpers
+    include ActionView::Helpers::TagHelper
+    include ActionView::Helpers::TextHelper
 
     # Uses a fixed number of columns (total_columns).
     #
@@ -17,42 +17,37 @@ module ColumnPack
       @bin_packer = BinPacker.new(total_columns, options)
     end
 
-    # Adds element to be packed.
-    def add(height, content = nil, &block)
-      if block_given?
-        @bin_packer.add(height.to_i, capture(&block))
-      else
-        @bin_packer.add(height.to_i, content)
-      end
+    def add(height, content)
+      @bin_packer.add(height.to_i, content)
     end
 
     # Renders all elements into columns.
     def render
-      render_columns(@bin_packer.bins).html_safe
+      wrap(@bin_packer.bins).html_safe
     end
 
     private
-    def render_columns(bins)
+    def wrap(bins)
       content_tag :div, :class => "column-pack-wrap" do
         capture do
           bins.each do |bin|
-            concat render_single_column(bin)
+            concat column(bin)
           end
         end
       end
     end
 
-    def render_single_column(bin)
+    def column(bin)
       content_tag :div, :class => "column-pack-col" do
         capture do
           bin.each do |element|
-            concat render_element(element)
+            concat element(element)
           end
         end
       end
     end
 
-    def render_element(element)
+    def element(element)
       content_tag :div, element.html_safe, :class => "column-pack-element"
     end
   end

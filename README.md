@@ -33,14 +33,14 @@ Add the following line to `app/assets/stylesheets/application.css`
 Pack some text into three columns:
 
 ```erb
-<%= pack_in_columns(3) do |bag| %>
+<%= pack_in_columns(3) do %>
 
-  <%= bag.add 100, 'A' %>
-  <%= bag.add 300, 'B' %>
-  <%= bag.add 50,  'C' %>
-  <%= bag.add 350, 'D' %>
-  <%= bag.add 200, 'E' %>
-  <%= bag.add 200, 'F' %>
+  <%= pack_element 100, 'A' %>
+  <%= pack_element 300, 'B' %>
+  <%= pack_element 50,  'C' %>
+  <%= pack_element 350, 'D' %>
+  <%= pack_element 200, 'E' %>
+  <%= pack_element 200, 'F' %>
 
 <%= end %>
 ```
@@ -48,10 +48,10 @@ Pack some text into three columns:
 Pack some images into five columns:
 
 ```erb
-<%= pack_in_columns(5) do |bag| %>
+<%= pack_in_columns(5) do %>
   <% @images.each do |image| %>
 
-   <% bag.add(image.height) do %>
+   <% pack_element(image.height) do %>
      <%= image_tag image.url %>
    <% end %>
 

@@ -8,17 +8,7 @@ class ColumnPackerTest < ActiveSupport::TestCase
     assert_equal ColumnPacker, cp.class
   end
 
-  test "accepts blocks" do
-    cp = ColumnPacker.new(3)
-
-    cp.add(100) do
-      "ZAP"
-    end
-
-    assert_includes cp.render, 'ZAP'
-  end
-
-  test "accepts non-blocks" do
+  test "add an element" do
     cp = ColumnPacker.new(3)
     cp.add(100, 'ZAP')
     assert_includes cp.render, 'ZAP'
