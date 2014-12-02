@@ -6,7 +6,7 @@ module ColumnPack
 
       yield(cp)
 
-      cp.render
+      cp.render.html_safe
     end
 
   end
