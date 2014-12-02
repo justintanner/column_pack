@@ -22,7 +22,7 @@ class ViewHelperTest < ActiveSupport::TestCase
   test "pack html into columns" do
     html = pack_in_columns(3) do |elements|
       elements.add(100) do
-        link_to "http://www.google.com", "ZAP"
+        link_to "http://www.google.com", content_tag(:p, "ZAP")
       end
     end
     assert_includes html, "ZAP"

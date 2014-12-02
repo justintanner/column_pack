@@ -29,7 +29,7 @@ module ColumnPack
 
     # Renders all elements into columns.
     def render
-      render_columns(@bin_packer.bins)
+      render_columns(@bin_packer.bins).html_safe
     end
 
     private
