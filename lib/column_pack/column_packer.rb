@@ -4,6 +4,8 @@ module ColumnPack
   class ColumnPacker
     include ActionView::Context
     include ActionView::Helpers
+    include ActionView::Helpers::CaptureHelper
+    include ActionView::Helpers::OutputSafetyHelper
 
     # Uses a fixed number of columns (total_columns).
     #
