@@ -7,7 +7,7 @@ require "column_pack/version"
 Gem::Specification.new do |s|
   s.name        = "column_pack"
   s.version     = ColumnPack::VERSION
-  s.homepsage   = "https://github.com/justintanner/column_pack"
+  s.homepage    = "https://github.com/justintanner/column_pack"
   s.authors     = ["Justin Tanner"]
   s.email       = ["justinwtanner@gmail.com"]
   s.summary     = "A rails helper to arrange content in columns."
