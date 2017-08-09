@@ -46,8 +46,10 @@ module ColumnPack
       pack_all if @needs_packing
       max = @sizes.each.max
       space = 0
+
       @sizes.each { |size| space += max - size }
-      return space
+
+      space
     end
 
     private
