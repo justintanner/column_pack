@@ -77,7 +77,7 @@ module ColumnPack
 
     def best_fit
       @elements.each do |element|
-        size, col = @sizes.each_with_index.min
+        _, col = @sizes.each_with_index.min
         pack(col, element)
       end
     end
@@ -89,7 +89,7 @@ module ColumnPack
     # moves the tallest bin to the middle
     def tall_to_middle
       if (@total_bins > 1) && ((@total_bins % 2) != 0)
-        size, max_col = @sizes.each_with_index.max
+        _, max_col = @sizes.each_with_index.max
         mid_col = @total_bins / 2
 
         temp = @bins[mid_col].clone

@@ -11,11 +11,11 @@ class BinPackerTest < ActiveSupport::TestCase
 
   test "can't init with a non-positive number of cols" do
     assert_raises ArgumentError do
-      bp = BinPacker.new(0)
+      BinPacker.new(0)
     end
 
     assert_raises ArgumentError do
-      bp = BinPacker.new(-100)
+      BinPacker.new(-100)
     end
   end
 
